@@ -9,6 +9,10 @@ pip install cookiecutter
 cookiecutter https://github.com/alphardex/cookiecutter-flask-basic.git
 ```
 
+## 预览
+
+![](./cap.png)
+
 ## 项目特征
 
 - 前端美化：[Flask-Bootstrap](https://pythonhosted.org/Flask-Bootstrap/)
