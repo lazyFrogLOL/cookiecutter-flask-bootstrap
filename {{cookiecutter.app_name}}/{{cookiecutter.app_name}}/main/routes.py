@@ -11,7 +11,7 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
     g.title = current_app.config['SITE_NAME']
-    g.github_user = current_app.config['GITHUB_USER']
+    g.github_username = current_app.config['GITHUB_USERNAME']
     g.email = current_app.config['EMAIL']
 
 

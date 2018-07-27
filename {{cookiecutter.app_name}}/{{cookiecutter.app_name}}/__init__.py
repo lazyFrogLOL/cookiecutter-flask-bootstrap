@@ -15,13 +15,13 @@ def create_app(config_class=Config):
     login.init_app(app)
     moment.init_app(app)
 
-    from app.main import bp as main_bp
+    from {{cookiecutter.app_name}}.main import bp as main_bp
     app.register_blueprint(main_bp)
 
-    from app.errors import bp as errors_bp
+    from {{cookiecutter.app_name}}.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
 
-    from app.auth import bp as auth_bp
+    from {{cookiecutter.app_name}}.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
     return app
