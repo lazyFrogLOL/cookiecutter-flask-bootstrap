@@ -1,0 +1,10 @@
+{
+	"email": "2582347430@qq.com",
+	"github_username": "alphardex",
+	"project_name": "Flasky",
+	"app_name": "flasky",
+	"short_description": "A pythonic flask app.",
+	"_copy_without_render": [
+		"*.html"
+	]
+}
