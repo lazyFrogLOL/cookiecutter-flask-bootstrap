@@ -2,9 +2,9 @@
 
 {{cookiecutter.short_description}}
 
-## 快速上手
+## Quick Start
 
-### 环境搭建
+### Build
 
 ``` bash
 git clone https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.app_name}}
@@ -14,7 +14,14 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 本地测试
+Or build with docker (which is more convenient)
+
+``` bash
+docker build -t {{cookiecutter.app_name}}:latest .
+docker run --name {{cookiecutter.app_name}} -d -p 8000:5000 {{cookiecutter.app_name}}:latest
+```
+
+### Run
 
 ``` bash
 export FLASK_APP={{cookiecutter.app_name}}.py
@@ -22,7 +29,7 @@ export FLASK_DEBUG=1
 flask run
 ```
 
-### 数据库迁移
+### Database Migration
 
 ``` bash
 flask db init
