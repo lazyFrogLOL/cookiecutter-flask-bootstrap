@@ -9,10 +9,6 @@ pip install cookiecutter
 cookiecutter https://github.com/alphardex/cookiecutter-flask-basic.git
 ```
 
-## Preview
-
-![](./cap.png)
-
 ## Features
 
 - Front-end：[Flask-Bootstrap](https://pythonhosted.org/Flask-Bootstrap/)
@@ -22,6 +18,6 @@ cookiecutter https://github.com/alphardex/cookiecutter-flask-basic.git
 - Time: [Flask-Moment](https://github.com/miguelgrinberg/Flask-Moment)
 - DEBUG: [Flask-Debugtoolbar](https://github.com/mgood/flask-debugtoolbar)
 - Best Practice：[Blueprints](http://flask.pocoo.org/docs/1.0/blueprints/) and [factory pattern](http://flask.pocoo.org/docs/1.0/patterns/appfactories)
-- Easy Deployment: Docker
+- Easy Deployment: pipenv or Docker
 
 Inspired by https://github.com/sloria/cookiecutter-flask
