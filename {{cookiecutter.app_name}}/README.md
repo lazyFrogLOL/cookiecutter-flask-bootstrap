@@ -6,15 +6,16 @@
 
 ### Build
 
+You can build with [pipenv](https://github.com/pypa/pipenv)
+
 ``` bash
 git clone https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.app_name}}
 cd {{cookiecutter.app_name}}
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+pipenv install --dev
+pipenv shell
 ```
 
-Or build with docker (which is more convenient)
+Or build with docker
 
 ``` bash
 docker build -t {{cookiecutter.app_name}}:latest .
