@@ -11,7 +11,7 @@ cookiecutter https://github.com/alphardex/cookiecutter-flask-basic.git
 
 ## Features
 
-- Front-end：[Flask-Bootstrap](https://pythonhosted.org/Flask-Bootstrap/)
+- Front-end：[Bootstrap-flask](https://bootstrap-flask.readthedocs.io/en/latest/)
 - Form Validation：[Flask-WTF](https://flask-wtf.readthedocs.io/)
 - ORM：[Flask-SQLAlchemy](http://flask-sqlalchemy.pocoo.org/2.3/)+[Flask-Migrate](https://github.com/miguelgrinberg/Flask-Migrate)（User Model）
 - Login：[Flask-Login](https://flask-login.readthedocs.io/)

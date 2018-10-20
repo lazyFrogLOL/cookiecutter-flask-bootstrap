@@ -1,9 +1,9 @@
 {% extends 'layout.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
+{% from 'bootstrap/form.html' import render_form %}
 
 {% block app_content %}
-    <div class="page-header">
-        <h1>请注册</h1>
-    </div>
-    {{ wtf.quick_form(form) }}
+<div class="pb-2 mt-4 mb-2 border-bottom">
+    <h1>请注册</h1>
+</div>
+{{ render_form(form) }}
 {% endblock %}

@@ -1,18 +1,12 @@
-{% extends 'bootstrap/base.html' %}
-
-{% block title %}
-{{ g.title }}
-{% endblock %}
-
 {% block head %} 
-{{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"> 
+{{ bootstrap.load_css() }}
+{{ bootstrap.load_js() }}
 {% endblock %}
 
 {% block styles %} 
-{{ super() }}
-<link rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.min.css">
+<link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 {% endblock %}
@@ -30,7 +24,6 @@
 {% endblock %}
 
 {% block scripts %}
-{{ super() }}
 {{ moment.include_moment() }}
 {{ moment.lang(g.locale) }}
 {% endblock %}
