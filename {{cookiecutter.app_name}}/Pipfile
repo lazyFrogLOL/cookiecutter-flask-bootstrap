@@ -12,6 +12,7 @@ flask-moment = "*"
 Flask = "*"
 Flask-SQLAlchemy = "*"
 Flask-Login = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pytest = "*"
