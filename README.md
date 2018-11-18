@@ -1,4 +1,4 @@
-# cookiecutter-flask
+# cookiecutter-flask-bootstrap
 
 A delicate flask boilerplate.
 
@@ -6,7 +6,7 @@ A delicate flask boilerplate.
 
 ``` bash
 pip install cookiecutter
-cookiecutter https://github.com/alphardex/cookiecutter-flask-basic.git
+cookiecutter https://github.com/alphardex/cookiecutter-flask-bootstrap.git
 ```
 
 ## Features
@@ -21,3 +21,5 @@ cookiecutter https://github.com/alphardex/cookiecutter-flask-basic.git
 - Easy Deployment: pipenv or Docker
 
 Inspired by https://github.com/sloria/cookiecutter-flask
+
+Also, I'm trying to make a Vue.js-integrated version :)
