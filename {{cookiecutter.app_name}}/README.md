@@ -15,13 +15,6 @@ pipenv install --dev
 pipenv shell
 ```
 
-Or build with docker
-
-``` bash
-docker build -t {{cookiecutter.app_name}}:latest .
-docker run --name {{cookiecutter.app_name}} -d -p 8000:5000 {{cookiecutter.app_name}}:latest
-```
-
 ### Database Migration
 
 ``` bash
