@@ -1,7 +1,7 @@
 from flask import Flask
 from config import Config
 from {{cookiecutter.app_name}}.extensions import *
-from {{cookiecutter.app_name}}.models import User
+from {{cookiecutter.app_name}}.models import db, User
 
 
 def create_app(config_class=Config):
@@ -23,5 +23,9 @@ def create_app(config_class=Config):
 
     from {{cookiecutter.app_name}}.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
+
+    @app.shell_context_processor
+    def make_shell_context():
+        return {'db': db, 'User': User}
 
     return app
