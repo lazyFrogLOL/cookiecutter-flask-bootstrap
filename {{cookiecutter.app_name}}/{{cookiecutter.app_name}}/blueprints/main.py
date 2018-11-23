@@ -1,8 +1,10 @@
-from {{cookiecutter.app_name}}.main import bp
-from flask import render_template, current_app, g
+from datetime import datetime
+from flask import Blueprint, render_template
 from flask_login import current_user
 from {{cookiecutter.app_name}}.models import User, db
-from datetime import datetime
+
+
+bp = Blueprint('main', __name__)
 
 
 @bp.before_app_request
@@ -14,10 +16,10 @@ def before_request():
 
 @bp.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('main/index.html')
 
 
 @bp.route('/user/<string:username>')
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    return render_template('user.html', user=user)
+    return render_template('main/user.html', user=user)

@@ -1,10 +1,11 @@
-from flask import render_template, redirect, url_for, flash, request, abort
-from {{cookiecutter.app_name}}.auth.forms import LoginForm, RegisterForm
-from {{cookiecutter.app_name}}.auth import bp
-from flask_login import current_user, login_user, logout_user
+from flask import Blueprint, render_template, redirect, url_for, flash, request
+from {{cookiecutter.app_name}}.forms import LoginForm, RegisterForm
 from {{cookiecutter.app_name}}.models import User
 from {{cookiecutter.app_name}}.extensions import db
-from urllib.parse import urlparse, urljoin
+from flask_login import current_user, login_user, logout_user
+
+
+bp = Blueprint('auth', __name__)
 
 
 @bp.route('/login', methods=['GET', 'POST'])

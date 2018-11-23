@@ -1,8 +1,8 @@
+from datetime import datetime
+from hashlib import md5
 from {{cookiecutter.app_name}}.extensions import db, login
 from werkzeug import security
 from flask_login import UserMixin
-from datetime import datetime
-from hashlib import md5
 
 
 class User(db.Model, UserMixin):
@@ -17,10 +17,10 @@ class User(db.Model, UserMixin):
 
     def set_password(self, password):
         self.password_hash = security.generate_password_hash(password)
-    
+
     def check_password(self, password):
         return security.check_password_hash(self.password_hash, password)
-    
+
     @login.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))

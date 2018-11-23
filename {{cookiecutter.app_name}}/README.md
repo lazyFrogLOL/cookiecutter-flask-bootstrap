@@ -25,7 +25,7 @@ flask db upgrade
 
 ### Run
 
-Note: Environment variables are already set in the `.env` file for local development.
+Note: Environment variables are already set in the `.flaskenv` file for local development, change if you want.
 
 ``` bash
 flask run
