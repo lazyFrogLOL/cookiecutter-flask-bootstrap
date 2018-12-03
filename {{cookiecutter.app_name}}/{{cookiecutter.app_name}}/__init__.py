@@ -5,6 +5,7 @@ from {{cookiecutter.app_name}}.extensions import *
 from {{cookiecutter.app_name}}.models import db, User
 from {{cookiecutter.app_name}}.blueprints.auth import bp as auth_bp
 from {{cookiecutter.app_name}}.blueprints.main import bp as main_bp
+from {{cookiecutter.app_name}}.blueprints.user import bp as user_bp
 
 
 def create_app(config_name=None):
@@ -34,6 +35,7 @@ def register_extensions(app):
 def register_blueprints(app):
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/auth')
+    app.register_blueprint(user_bp, url_prefix='/user')
 
 
 def register_shell_context(app):
