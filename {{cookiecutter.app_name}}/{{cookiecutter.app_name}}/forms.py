@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from {{cookiecutter.app_name}}.models import User
 
 
@@ -10,21 +10,14 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('记住我')
     submit = SubmitField('登录')
 
-    def validate(self):
-        initial_validation = super(LoginForm, self).validate()
-        if not initial_validation:
-            return False
+    def validate_username(self, field):
+        if not User.query.filter_by(username=field.data).first():
+            raise ValidationError('该用户不存在')
 
-        self.user = User.query.filter_by(username=self.username.data).first()
-
-        if not self.user:
-            self.username.errors.append('该用户不存在！')
-            return False
-
-        if not self.user.check_password(password=self.password.data):
-            self.password.errors.append('密码错误！')
-            return False
-        return True
+    def validate_password(self, field):
+        user = User.query.filter_by(username=self.username.data).first()
+        if user and not user.check_password(password=field.data):
+            raise ValidationError('密码错误')
 
 
 class RegisterForm(FlaskForm):
@@ -34,19 +27,10 @@ class RegisterForm(FlaskForm):
     confirm = PasswordField('确认密码', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('注册')
 
-    def validate(self):
-        initial_validation = super(RegisterForm, self).validate()
-        if not initial_validation:
-            return False
+    def validate_username(self, field):
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('用户名已被占用')
 
-        self.user = User.query.filter_by(username=self.username.data).first()
-        self.email_ = User.query.filter_by(email=self.email.data).first()
-
-        if self.user:
-            self.username.errors.append('该用户已存在！')
-            return False
-
-        if self.email_:
-            self.email.errors.append('该邮箱已存在！')
-            return False
-        return True
+    def validate_email(self, field):
+        if User.query.filter_by(email=field.data).first():
+            raise ValidationError('邮箱已被占用')

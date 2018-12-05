@@ -30,6 +30,7 @@ def register_extensions(app):
     migrate.init_app(app, db)
     login.init_app(app)
     moment.init_app(app)
+    csrf.init_app(app)
 
 
 def register_blueprints(app):
