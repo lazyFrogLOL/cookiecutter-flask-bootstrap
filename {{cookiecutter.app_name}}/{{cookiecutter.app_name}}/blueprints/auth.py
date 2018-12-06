@@ -15,8 +15,13 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        login_user(user, remember=form.remember_me.data)
-        return redirect(request.args.get('next') or url_for('main.index'))
+        if not user:
+            flash('该用户不存在！', 'danger')
+        elif not user.check_password(password=form.password.data):
+            flash('密码错误！', 'danger')
+        else:
+            login_user(user, remember=form.remember_me.data)
+            return redirect(request.args.get('next') or url_for('main.index'))
     return render_template('auth/login.html', form=form)
 
 

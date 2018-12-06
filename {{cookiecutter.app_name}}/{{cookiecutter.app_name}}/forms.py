@@ -4,33 +4,28 @@ from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from {{cookiecutter.app_name}}.models import User
 
 
+class Unique(object):
+    def __init__(self, model, field, message=None):
+        self.model = model
+        self.field = field
+        self.message = message if message else '已被占用'
+
+    def __call__(self, form, field):
+        check = self.model.query.filter(self.field==field.data).first()
+        if check:
+            raise ValidationError(self.message)
+
+
 class LoginForm(FlaskForm):
-    username = StringField('用户名', validators=[DataRequired()])
-    password = PasswordField('密码', validators=[DataRequired()])
+    username = StringField('用户名', [DataRequired()])
+    password = PasswordField('密码', [DataRequired()])
     remember_me = BooleanField('记住我')
     submit = SubmitField('登录')
 
-    def validate_username(self, field):
-        if not User.query.filter_by(username=field.data).first():
-            raise ValidationError('该用户不存在')
-
-    def validate_password(self, field):
-        user = User.query.filter_by(username=self.username.data).first()
-        if user and not user.check_password(password=field.data):
-            raise ValidationError('密码错误')
-
 
 class RegisterForm(FlaskForm):
-    username = StringField('用户名', validators=[DataRequired()])
-    email = StringField('邮箱', validators=[Email(), DataRequired()])
-    password = PasswordField('密码', validators=[DataRequired()])
-    confirm = PasswordField('确认密码', validators=[DataRequired(), EqualTo('password')])
+    username = StringField('用户名', [DataRequired(), Unique(User, User.username, '该用户名已存在')])
+    email = StringField('邮箱', [Email(), DataRequired(), Unique(User, User.email, '该邮箱已被占用')])
+    password = PasswordField('密码', [DataRequired()])
+    confirm = PasswordField('确认密码', [DataRequired(), EqualTo('password')])
     submit = SubmitField('注册')
-
-    def validate_username(self, field):
-        if User.query.filter_by(username=field.data).first():
-            raise ValidationError('用户名已被占用')
-
-    def validate_email(self, field):
-        if User.query.filter_by(email=field.data).first():
-            raise ValidationError('邮箱已被占用')
