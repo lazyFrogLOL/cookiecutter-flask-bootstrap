@@ -30,3 +30,10 @@ Note: Environment variables are already set in the `.flaskenv` file for local de
 ``` bash
 flask run
 ```
+
+### Test
+
+``` bash
+pipenv run test
+pipenv run coverage
+```
