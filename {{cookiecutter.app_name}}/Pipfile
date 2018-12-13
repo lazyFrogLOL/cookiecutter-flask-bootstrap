@@ -14,16 +14,16 @@ Flask-SQLAlchemy = "*"
 Flask-Login = "*"
 python-dotenv = "*"
 
-{%- if cookiecutter.better_dev_experience == "yes" -%}
+{% if cookiecutter.better_dev_experience == "yes" %}
 [dev-packages]
 coverage = "*"
 pdir2 = "*"
 ptpython = "*"
 yapf = "*"
-{%- endif -%}
+{% endif %}
 
 [scripts]
 test = "python -m unittest discover"
-{%- if cookiecutter.better_dev_experience == "yes" -%}
+{% if cookiecutter.better_dev_experience == "yes" %}
 coverage = "coverage run -m unittest discover"
-{%- endif -%}
+{% endif %}
