@@ -4,7 +4,7 @@
 	"project_name": "Flasky",
 	"app_name": "flasky",
 	"short_description": "A pythonic flask app.",
-	"better_dev_experience": ["no", "yes"],
+	"better_dev_experience": "no",
 	"_copy_without_render": [
 		"*.html"
 	]
