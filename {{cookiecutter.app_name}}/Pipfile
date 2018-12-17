@@ -19,6 +19,7 @@ coverage = "*"
 pdir2 = "*"
 ptpython = "*"
 yapf = "*"
+pylint = "*"
 
 [scripts]
 test = "python -m unittest discover"
