@@ -1,5 +1,7 @@
 import os
+import click
 from flask import Flask, render_template
+from flask.cli import with_appcontext
 from {{cookiecutter.app_name}}.config import config
 from {{cookiecutter.app_name}}.extensions import *
 from {{cookiecutter.app_name}}.models import db, User
@@ -19,6 +21,7 @@ def create_app(config_name=None):
     register_extensions(app)
     register_shell_context(app)
     register_errors(app)
+    register_cli(app)
 
     return app
 
@@ -57,3 +60,16 @@ def register_errors(app):
     @app.errorhandler(500)
     def internal_server_error(e):
         return render_template('errors/500.html'), 500
+
+
+def register_cli(app):
+    @app.cli.command()
+    @with_appcontext
+    def ptshell():
+        """Use ptpython as shell."""
+        try:
+            from ptpython.repl import embed
+            if not app.config['TESTING']:
+                embed(app.make_shell_context())
+        except ImportError:
+            click.echo('ptpython not installed! Use the default shell instead.')
