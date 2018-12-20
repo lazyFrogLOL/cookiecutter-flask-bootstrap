@@ -1,4 +1,4 @@
-from flasky.extensions import db
+from {{cookiecutter.app_name}}.extensions import db
 from tests.base import BaseTestCase
 
 
