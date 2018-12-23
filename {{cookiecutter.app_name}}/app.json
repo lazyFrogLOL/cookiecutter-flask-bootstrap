@@ -1,0 +1,9 @@
+{
+    "name": "{{cookiecutter.project_name}}",
+    "description": "{{cookiecutter.short_description}}",
+    "repository": "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.app_name}}",
+    "keywords": [
+        "python",
+        "flask"
+    ]
+}
