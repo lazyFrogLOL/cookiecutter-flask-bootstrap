@@ -2,9 +2,10 @@ import os
 
 
 def remove_unnecessary_files():
-    better_dev_experience = '{{cookiecutter.better_dev_experience}}'
-    if better_dev_experience == 'no':
+    if '{{cookiecutter.better_dev_experience}}' == 'no':
         os.remove('.coveragerc')
+    if '{{cookiecutter.deploy_to_heroku}}' == 'no':
+        os.remove('Procfile')
 
 
 if __name__ == '__main__':

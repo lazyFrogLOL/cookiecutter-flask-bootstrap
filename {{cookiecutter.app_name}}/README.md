@@ -37,3 +37,9 @@ flask run
 pipenv run test
 pipenv run coverage
 ```
+
+### Deploy to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.app_name}})
+
+Don't forget to create a Postgre addon and set FLASK_CONFIG=production in dashboard-settings-config vars.

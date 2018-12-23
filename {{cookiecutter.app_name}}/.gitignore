@@ -9,6 +9,9 @@ dist/
 *.egg-info/
 .idea
 venv
+
+# Others
 .vscode
 .coverage
 htmlcov/
+data-dev.db

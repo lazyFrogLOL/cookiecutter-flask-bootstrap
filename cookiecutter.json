@@ -5,6 +5,7 @@
 	"app_name": "flasky",
 	"short_description": "A pythonic flask app.",
 	"better_dev_experience": "no",
+	"deploy_to_heroku": "no",
 	"_copy_without_render": [
 		"*.html"
 	]
